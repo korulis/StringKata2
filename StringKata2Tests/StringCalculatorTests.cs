@@ -26,7 +26,7 @@ namespace StringKata2Tests
         [Test]
         public void TemplateTest()
         {
-            var arg = string.Empty
+            var arg = string.Empty;
             var actual = _sut.Add(arg);
         }
     }
