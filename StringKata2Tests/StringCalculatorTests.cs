@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Ploeh.AutoFixture.NUnit3;
 using StringKata2;
 
 namespace StringKata2Tests
@@ -15,32 +16,17 @@ namespace StringKata2Tests
         }
 
         [Test]
-        public void Zero()
+        [InlineAutoData(0, "")]
+        [InlineAutoData(1, "1")]
+        [InlineAutoData(2, "2")]
+        public void SimpleSum(int expected, string arg)
         {
-            var actual = _sut.Add(string.Empty);
-
-            Assert.AreEqual(0, actual);
-        }
-
-
-        [Test]
-        public void One()
-        {
-            var arg = "1";
             var actual = _sut.Add(arg);
 
-            Assert.AreEqual(1, actual);
-
+            Assert.AreEqual(expected, actual);
         }
 
-        [Test]
-        public void Two()
-        {
-            var arg = "2";
-            var actual = _sut.Add(arg);
 
-            Assert.AreEqual(2, actual);
-        }
 
 
         [Test]
