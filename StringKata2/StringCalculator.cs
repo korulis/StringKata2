@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace StringKata2
 {
@@ -6,12 +7,19 @@ namespace StringKata2
     {
         public int Add(string arg)
         {
-            int ats;
+            if (arg == string.Empty) return 0;
 
-            ats = arg == string.Empty ? 0 : int.Parse(arg);
+            var strings = arg.Split(',').ToList();
+            int sum = 0;
+            var parsed =  strings.Select(int.Parse).ToList();
 
+            foreach (var i in parsed)
+            {
+                sum += i;
+            }
 
-            return ats;
+            return sum;
         }
+
     }
 }

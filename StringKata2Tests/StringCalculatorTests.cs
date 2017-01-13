@@ -19,6 +19,7 @@ namespace StringKata2Tests
         [InlineAutoData(0, "")]
         [InlineAutoData(1, "1")]
         [InlineAutoData(2, "2")]
+        [InlineAutoData(3, "1,2")]
         public void SimpleSum(int expected, string arg)
         {
             var actual = _sut.Add(arg);
