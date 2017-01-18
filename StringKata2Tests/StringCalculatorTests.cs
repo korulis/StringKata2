@@ -31,12 +31,20 @@ namespace StringKata2Tests
 
         [Test]
         [InlineAutoData(3, "1,2")]
+        [InlineAutoData(3, "1,1,1")]
+        [InlineAutoData(8, "1,4,1,2")]
+        [InlineAutoData(2, "1\'\\r\\n\'1")]
         public void Adds(int expectedSum, string numbers)
         {
             var actual = _sut.Add(numbers);
 
             Assert.AreEqual(expectedSum, actual);
         }
+
+
+
+
+
 
 
     }

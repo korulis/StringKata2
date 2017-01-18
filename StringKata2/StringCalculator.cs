@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace StringKata2
 {
@@ -8,9 +9,11 @@ namespace StringKata2
         {
             if (numbers == "") return 0;
 
-            var numbersList = numbers.Split(',');
-
-            var sum = numbersList.ToList().Select(int.Parse).Aggregate((s1, s2) => s1 + s2);
+            var sum = numbers
+                .Split(new[] { "\'\\r\\n\'", "," }, StringSplitOptions.RemoveEmptyEntries)
+                .ToList()
+                .Select(int.Parse)
+                .Aggregate((s1, s2) => s1 + s2);
 
             return sum;
         }
