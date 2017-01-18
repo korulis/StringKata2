@@ -22,6 +22,15 @@ namespace StringKata2Tests
         [InlineAutoData(0, "0")]
         [InlineAutoData(0, "")]
         [InlineAutoData(1, "1")]
+        public void ParsesSingle(int expectedSum, string numbers)
+        {
+            var actual = _sut.Add(numbers);
+
+            Assert.AreEqual(expectedSum, actual);
+        }
+
+        [Test]
+        [InlineAutoData(3, "1,2")]
         public void Adds(int expectedSum, string numbers)
         {
             var actual = _sut.Add(numbers);
