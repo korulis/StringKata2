@@ -50,6 +50,7 @@ namespace StringKata2Tests
 
         [Test]
         [InlineAutoData(3, "//;\n1;2")]
+        //[InlineAutoData(3, "//;\n")]
         public void ChangeDelimiter(int expected, string input)
         {
             var actual = _sut.Add(input);
