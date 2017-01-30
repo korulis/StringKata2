@@ -23,6 +23,7 @@ namespace StringKata2
             }
 
 
+
             var sum = SumNumbers(pureInput, delimiters);
             return sum;
 
@@ -47,10 +48,18 @@ namespace StringKata2
 
         private static int SumNumbers(string delimitedNumbers, string[] delimiters)
         {
-            return delimitedNumbers.Split(delimiters, StringSplitOptions.None)
+            var summands = delimitedNumbers.Split(delimiters, StringSplitOptions.None)
                 .Where(s => s != string.Empty)
-                .Select(int.Parse)
-                .Aggregate(Sum);
+                .Select(int.Parse);
+
+            var negatives = summands.Where(x => x < 0);
+            if (negatives.Any())
+            {
+                throw new NegativesException($"negatives not allowed: {negatives.Select(x=>x.ToString()).Aggregate((a,b)=> $"{a},{b}")}");
+            }
+
+            if (!summands.Any()) return 0;
+            return summands.Aggregate(Sum);
         }
 
         private static int Sum(int s1, int s2)
